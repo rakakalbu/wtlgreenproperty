@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact Us — Web‑to‑Lead</title>
+  <title>Green Property — Find Your Perfect Unit</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: #0b1020;
-      --card: #0f172a;
-      --muted: #94a3b8;
-      --text: #e2e8f0;
-      --primary: #7c3aed;  /* violet-600 */
-      --primary-2: #6d28d9; /* violet-700 */
-      --ring: rgba(124, 58, 237, .65);
+      /* Green Property palette */
+      --bg: #0a1110;             /* deep green-black */
+      --card: #0f1a18;           /* card surface */
+      --muted: #9fb3ad;          /* cool muted text */
+      --text: #e6f3ef;           /* high-contrast text */
+      --primary: #10b981;        /* emerald-500 */
+      --primary-2: #059669;      /* emerald-600 */
+      --ring: rgba(16,185,129,.55);
       --error: #ef4444;
       --ok: #22c55e;
     }
@@ -23,25 +24,28 @@
     html,body{height:100%}
     body{
       margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 600px at 85% -10%, rgba(124,58,237,.25), transparent 60%),
-                  radial-gradient(800px 400px at -10% 10%, rgba(59,130,246,.18), transparent 60%),
-                  var(--bg);
+      background:
+        radial-gradient(900px 380px at 85% -10%, rgba(16,185,129,.20), transparent 60%),
+        radial-gradient(700px 360px at -10% 10%, rgba(5,150,105,.18), transparent 60%),
+        var(--bg);
       color:var(--text);
     }
     .wrap{max-width:1120px;margin-inline:auto;padding:48px 20px}
-    .header{display:grid;gap:12px;justify-items:center;text-align:center;margin-bottom:28px}
-    .badge{display:inline-flex;gap:8px;align-items:center;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.35);color:#c4b5fd;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.02em}
-    .logo{display:grid;grid-auto-flow:column;align-items:center;gap:12px}
-    .logo svg{height:28px;width:28px}
-    h1{font-size:clamp(28px,4vw,40px);line-height:1.1;margin:0}
+    .header{display:grid;gap:10px;justify-items:center;text-align:center;margin-bottom:28px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:42px;width:auto}
+    h1{font-size:clamp(26px,4vw,38px);line-height:1.1;margin:4px 0 0}
     .sub{color:var(--muted);max-width:720px}
 
     .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
     @media (max-width:900px){.grid{grid-template-columns:1fr;}}
 
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-          border:1px solid rgba(148,163,184,.18); border-radius:18px; padding:22px}
-    .card h2{margin:4px 0 16px;font-size:18px;color:#e9d5ff}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:18px; padding:22px
+    }
+    .card h2{margin:4px 0 16px;font-size:18px;color:#b7f7df}
 
     form{display:grid;gap:14px}
     .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -49,28 +53,40 @@
 
     label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
     input[type="text"], input[type="email"], select{
-      width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(148,163,184,.25);
-      background:#0b1222; color:var(--text); outline: none; transition:.2s border-color,.2s box-shadow,.2s transform;
+      width:100%; padding:12px 14px; border-radius:12px;
+      border:1px solid rgba(148,163,184,.25);
+      background:#0b1614; color:var(--text);
+      outline: none; transition:.2s border-color,.2s box-shadow,.2s transform;
     }
-    input::placeholder{color:#637189}
-    select{appearance:none;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%2394a3b8"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>');
-      background-repeat:no-repeat; background-position:right 12px center; background-size:18px}
+    input::placeholder{color:#6b8a84}
+    select{
+      appearance:none;
+      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%239fb3ad"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>');
+      background-repeat:no-repeat; background-position:right 12px center; background-size:18px
+    }
     input:focus, select:focus{border-color:var(--primary); box-shadow:0 0 0 4px var(--ring)}
     .error{border-color:var(--error)!important}
 
-    .actions{display:flex;gap:12px;align-items:center;margin-top:8px}
+    .actions{display:flex;gap:12px;align-items:center;margin-top:8px;flex-wrap:wrap}
     button{
-      background:linear-gradient(180deg,var(--primary),var(--primary-2)); color:#fff; border:none; padding:12px 16px; border-radius:12px; font-weight:700; letter-spacing:.02em;
-      cursor:pointer; transition:transform .06s ease, filter .15s ease; box-shadow:0 10px 22px rgba(124,58,237,.25);
+      background:linear-gradient(180deg,var(--primary),var(--primary-2));
+      color:#0a1110; border:none; padding:12px 16px; border-radius:12px;
+      font-weight:800; letter-spacing:.02em;
+      cursor:pointer; transition:transform .06s ease, filter .15s ease;
+      box-shadow:0 10px 22px rgba(16,185,129,.25);
     }
     button:hover{filter:brightness(1.05)}
     button:active{transform:translateY(1px)}
     .muted{color:var(--muted); font-size:12px}
 
     .side{display:grid;gap:16px}
-    .tip{background:rgba(2,6,23,.65); border:1px dashed rgba(148,163,184,.25); padding:14px 16px; border-radius:14px; font-size:13px; color:#cbd5e1}
+    .tip{
+      background:#0a1513;
+      border:1px dashed rgba(148,163,184,.25);
+      padding:14px 16px; border-radius:14px; font-size:13px; color:#d7f1ea
+    }
     .tip code{background:rgba(148,163,184,.18); padding:2px 6px; border-radius:6px; font-size:12px}
-    .success{display:none;gap:8px;align-items:center;color:var(--ok);font-weight:600}
+    .success{display:none;gap:8px;align-items:center;color:var(--ok);font-weight:700}
     .success.show{display:flex}
     .hidden{display:none!important}
   </style>
@@ -78,22 +94,26 @@
 <body>
   <div class="wrap">
     <header class="header">
-      <div class="badge">Salesforce Web‑to‑Lead</div>
-      <div class="logo" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l3.09 6.26L22 10.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 15.15l-5-4.88 6.91-1.01L12 3z"/></svg>
-        <h1>Get in touch</h1>
+      <div class="brand">
+        <img src="/logo.png" alt="Green Property logo" />
+        <h1>Green Property — Find Your Perfect Unit</h1>
       </div>
-      <p class="sub">Fill the form below and our team will contact you shortly. This form securely submits to your Salesforce org using Web‑to‑Lead.</p>
+      <p class="sub">Tell us a bit about you and we’ll get back to help match you with the right unit.</p>
     </header>
 
     <div class="grid">
       <section class="card">
         <h2>Your details</h2>
+
+        <!-- NOTE:
+             We removed the Lead Source picklist. If you still want Salesforce reporting
+             by channel, keep the hidden default below (value='Web'). Delete it if not needed. -->
         <form id="leadForm" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DgL000005xGIn" method="POST" novalidate>
-          <!-- Required hidden fields -->
           <input type="hidden" name="oid" value="00DgL000005xGIn" />
           <input type="hidden" name="retURL" value="https://wtlgreenproperty-5hz76jz6c-green-property.vercel.app/thanks.html" />
-          <!-- Honeypot (anti‑spam): keep hidden; bots will fill it -->
+          <input type="hidden" name="lead_source" value="Web" />
+
+          <!-- Honeypot (anti‑spam) -->
           <div class="hidden">
             <label for="company">Company</label>
             <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
@@ -113,39 +133,25 @@
               </select>
             </div>
             <div>
-              <label for="lead_source">Lead Source</label>
-              <select id="lead_source" name="lead_source" required>
-                <option value="">— Please choose —</option>
-                <option>Exhibition/Fair</option>
-                <option>Web</option>
-                <option>Phone Inquiry</option>
-                <option>Partner Referral</option>
-                <option>Purchased List</option>
-                <option>Other</option>
-              </select>
+              <label for="first_name">First Name</label>
+              <input id="first_name" name="first_name" type="text" maxlength="40" placeholder="Jane" />
             </div>
           </div>
 
           <div class="row">
-            <div>
-              <label for="first_name">First Name</label>
-              <input id="first_name" name="first_name" type="text" maxlength="40" placeholder="Jane" />
-            </div>
             <div>
               <label for="last_name">Last Name <span aria-hidden="true">*</span></label>
               <input id="last_name" name="last_name" type="text" maxlength="80" placeholder="Doe" required />
             </div>
-          </div>
-
-          <div class="row">
             <div>
               <label for="email">Email <span aria-hidden="true">*</span></label>
               <input id="email" name="email" type="email" maxlength="80" placeholder="jane@example.com" required />
             </div>
-            <div>
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone" type="text" maxlength="40" placeholder="+62 812‑3456‑7890" pattern="^[+()\-\s\d]{6,}$" />
-            </div>
+          </div>
+
+          <div>
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="text" maxlength="40" placeholder="+62 812‑3456‑7890" pattern="^[+()\\-\\s\\d]{6,}$" />
           </div>
 
           <div class="actions">
@@ -154,9 +160,9 @@
             <span id="successMsg" class="success" role="status" aria-live="polite">✔ Submitted — redirecting…</span>
           </div>
 
-          <!-- Optional: enable Salesforce debug during setup -->
-          <!-- <input type="hidden" name="debug" value="1" /> -->
-          <!-- <input type="hidden" name="debugEmail" value="you@example.com" /> -->
+          <!-- Debug (uncomment to test) -->
+          <!-- <input type="hidden" name="debug" value="1" />
+          <input type="hidden" name="debugEmail" value="you@example.com" /> -->
         </form>
       </section>
 
@@ -165,15 +171,15 @@
           <h2>What happens next?</h2>
           <ul class="muted" style="margin:0;padding-left:18px;line-height:1.8">
             <li>Your details are sent directly to Salesforce Leads.</li>
-            <li>Assignment rules & automations can route the lead to the right owner.</li>
-            <li>You can customize fields in this form without changing the endpoint.</li>
+            <li>Our team reviews your preferences and contacts you with options.</li>
+            <li>We guide you to <em>the perfect unit</em> for your needs.</li>
           </ul>
         </div>
         <div class="tip">
           <strong>Setup tips</strong><br>
-          • Replace <code>orgId</code> & <code>retURL</code> with your values.<br>
-          • Use the commented <code>debug</code> fields to test emails.<br>
-          • Keep the field <em>names</em> exactly as Salesforce expects (e.g. <code>first_name</code>, <code>lead_source</code>).
+          • Keep field <em>names</em> as Salesforce expects (e.g. <code>first_name</code>).<br>
+          • <code>retURL</code> should point to your thank‑you page.<br>
+          • Leave the hidden <code>lead_source</code> if you want “Web” by default.
         </div>
       </aside>
     </div>
@@ -194,7 +200,7 @@
 
       function validate(){
         let ok = true;
-        const required = ['last_name','email','lead_source'];
+        const required = ['last_name','email']; // lead_source removed from required
         required.forEach(id=>{
           const el = document.getElementById(id);
           const good = el && el.value.trim().length > 0 && (el.checkValidity ? el.checkValidity() : true);
@@ -202,19 +208,17 @@
           if(!good) ok = false;
         });
         const email = document.getElementById('email');
-        if(email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){
+        if(email && email.value && !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email.value)){
           ok = false; markInvalid(email, true);
         }
         return ok;
       }
 
       form.addEventListener('input', e=>{
-        // live clear
         if(e.target.matches('input,select')) markInvalid(e.target, false);
       });
 
       form.addEventListener('submit', e => {
-        // Simple anti‑spam: block if honeypot has value
         const honey = document.getElementById('company');
         if(honey && honey.value){ e.preventDefault(); return; }
 
@@ -223,7 +227,6 @@
           status.textContent = 'Please complete the required fields.';
           return;
         }
-        // UX: show submitting state; the browser will navigate to retURL upon success
         submitBtn.disabled = true;
         status.textContent = 'Submitting…';
         success.classList.add('show');
@@ -232,5 +235,3 @@
   </script>
 </body>
 </html>
-
-
