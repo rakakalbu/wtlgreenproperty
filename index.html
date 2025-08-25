@@ -211,8 +211,10 @@
           if(!good) ok = false;
         });
         const email = document.getElementById('email');
-        if(email && email.value && !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email.value)){
-          ok = false; markInvalid(email, true);
+        if(email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){
+          ok = false;
+          email.classList.add('error');
+          email.setAttribute('aria-invalid','true');
         }
         return ok;
       }
@@ -238,4 +240,5 @@
   </script>
 </body>
 </html>
+
 
