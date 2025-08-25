@@ -19,37 +19,65 @@
       --ring: rgba(16,185,129,.55);
       --error: #ef4444;
       --ok: #22c55e;
+      --border: rgba(148,163,184,.18);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";
       background:
         radial-gradient(900px 380px at 85% -10%, rgba(16,185,129,.20), transparent 60%),
         radial-gradient(700px 360px at -10% 10%, rgba(5,150,105,.18), transparent 60%),
         var(--bg);
       color:var(--text);
+
+      /* Center the whole page content */
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      padding:24px;
     }
-    .wrap{max-width:1120px;margin-inline:auto;padding:48px 20px}
-    .header{display:grid;gap:10px;justify-items:center;text-align:center;margin-bottom:28px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{height:60px;width:auto}
-    h1{font-size:clamp(26px,4vw,38px);line-height:1.1;margin:4px 0 0}
-    .sub{color:var(--muted);max-width:720px}
 
-    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
-    @media (max-width:900px){.grid{grid-template-columns:1fr;}}
+    /* Page stack (logo/title + card) */
+    .page{
+      width:100%;
+      max-width: 980px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:22px;
+    }
 
+    /* Header */
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{
+      height: clamp(48px, 6vw, 72px); /* responsive logo height */
+      width:auto;
+    }
+    h1{font-size:clamp(26px,4vw,38px);line-height:1.1;margin:0}
+    .sub{color:var(--muted);text-align:center;margin:0;max-width: 820px}
+
+    /* Centered card */
     .card{
+      width:100%;
+      max-width: 980px;
       background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border:1px solid rgba(148,163,184,.18);
-      border-radius:18px; padding:22px
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:28px 24px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.25);
     }
-    .card h2{margin:4px 0 16px;font-size:18px;color:#b7f7df}
+    .card-inner{
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .card h2{margin:4px 0 16px;font-size:20px;color:#b7f7df}
 
     form{display:grid;gap:14px}
     .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    @media (max-width:560px){.row{grid-template-columns:1fr}}
+    @media (max-width:640px){.row{grid-template-columns:1fr}}
 
     label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
     input[type="text"], input[type="email"], select{
@@ -79,21 +107,15 @@
     button:active{transform:translateY(1px)}
     .muted{color:var(--muted); font-size:12px}
 
-    .side{display:grid;gap:16px}
-    .tip{
-      background:#0a1513;
-      border:1px dashed rgba(148,163,184,.25);
-      padding:14px 16px; border-radius:14px; font-size:13px; color:#d7f1ea
-    }
-    .tip code{background:rgba(148,163,184,.18); padding:2px 6px; border-radius:6px; font-size:12px}
     .success{display:none;gap:8px;align-items:center;color:var(--ok);font-weight:700}
     .success.show{display:flex}
     .hidden{display:none!important}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="header">
+  <main class="page" role="main">
+    <!-- Header -->
+    <header class="header" style="text-align:center">
       <div class="brand">
         <img src="/logo.png" alt="Green Property logo" />
         <h1>Green Property — Find Your Perfect Unit</h1>
@@ -101,13 +123,12 @@
       <p class="sub">Tell us a bit about you and we’ll get back to help match you with the right unit.</p>
     </header>
 
-    <div class="grid">
-      <section class="card">
+    <!-- Centered Card -->
+    <section class="card">
+      <div class="card-inner">
         <h2>Your details</h2>
 
-        <!-- NOTE:
-             We removed the Lead Source picklist. If you still want Salesforce reporting
-             by channel, keep the hidden default below (value='Web'). Delete it if not needed. -->
+        <!-- Lead Source picklist removed; default to Web via hidden input -->
         <form id="leadForm" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DgL000005xGIn" method="POST" novalidate>
           <input type="hidden" name="oid" value="00DgL000005xGIn" />
           <input type="hidden" name="retURL" value="https://wtlgreenproperty-5hz76jz6c-green-property.vercel.app/thanks.html" />
@@ -164,9 +185,9 @@
           <!-- <input type="hidden" name="debug" value="1" />
           <input type="hidden" name="debugEmail" value="you@example.com" /> -->
         </form>
-      </section>
-    </div>
-  </div>
+      </div>
+    </section>
+  </main>
 
   <script>
     (function(){
@@ -183,7 +204,7 @@
 
       function validate(){
         let ok = true;
-        const required = ['last_name','email']; // lead_source removed from required
+        const required = ['last_name','email'];
         required.forEach(id=>{
           const el = document.getElementById(id);
           const good = el && el.value.trim().length > 0 && (el.checkValidity ? el.checkValidity() : true);
@@ -218,5 +239,3 @@
   </script>
 </body>
 </html>
-
-
