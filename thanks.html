@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thanks — We Got Your Request</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: #0f172a;
+      --muted: #94a3b8;
+      --text: #e2e8f0;
+      --primary: #7c3aed;  /* violet-600 */
+      --primary-2: #6d28d9; /* violet-700 */
+      --ring: rgba(124, 58, 237, .65);
+      --ok: #22c55e;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 85% -10%, rgba(124,58,237,.25), transparent 60%),
+                  radial-gradient(800px 400px at -10% 10%, rgba(59,130,246,.18), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      display:grid;place-items:center;min-height:100vh;padding:24px
+    }
+    .card{max-width:720px;width:100%;background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+          border:1px solid rgba(148,163,184,.18); border-radius:20px; padding:28px 26px; text-align:center}
+    .badge{display:inline-flex;gap:8px;align-items:center;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.35);color:#c4b5fd;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.02em}
+    h1{font-size:clamp(28px,4vw,40px);line-height:1.1;margin:14px 0}
+    p{color:var(--muted);margin:8px 0 0}
+    .ok{display:inline-grid;place-items:center;height:84px;width:84px;border-radius:50%;
+        background:linear-gradient(180deg,var(--primary),var(--primary-2));
+        color:#fff;margin:10px auto 8px;box-shadow:0 14px 26px rgba(124,58,237,.28)}
+    .ok svg{width:40px;height:40px}
+
+    .meta{margin-top:16px;color:#a5b4fc;font-size:13px}
+    .buttons{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:20px}
+    a.btn, button.btn{display:inline-flex;gap:8px;align-items:center;justify-content:center; padding:12px 16px; border-radius:12px; font-weight:700; letter-spacing:.02em; text-decoration:none}
+    .btn.primary{background:linear-gradient(180deg,var(--primary),var(--primary-2));color:#fff;box-shadow:0 10px 22px rgba(124,58,237,.25)}
+    .btn.ghost{border:1px solid rgba(148,163,184,.25); background:#0b1222; color:#e2e8f0}
+
+    .small{margin-top:18px;font-size:12px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <span class="badge">Salesforce Web‑to‑Lead</span>
+
+    <div class="ok" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 6L9 17l-5-5"/>
+      </svg>
+    </div>
+
+    <h1 id="title">Thanks, <span id="name">there!</span> 🎉</h1>
+    <p>We received your request and created a Lead in Salesforce. Our team will reach out soon.</p>
+    <p class="meta" id="meta"></p>
+
+    <div class="buttons">
+      <a class="btn primary" href="/">Back to Home</a>
+      <a class="btn ghost" href="/">Submit another inquiry</a>
+    </div>
+
+    <div class="small">Tip: Set your Web‑to‑Lead <code>retURL</code> to this page’s URL.</div>
+  </main>
+
+  <script>
+    // Personalize using URL params, e.g. retURL?first_name=Jane&last_name=Doe
+    (function(){
+      const p = new URLSearchParams(window.location.search);
+      const first = p.get('first_name') || p.get('first') || '';
+      const last = p.get('last_name') || p.get('last') || '';
+      const email = p.get('email') || '';
+      const nameEl = document.getElementById('name');
+      const metaEl = document.getElementById('meta');
+
+      const name = (first + ' ' + last).trim();
+      if(name) nameEl.textContent = name;
+
+      // Show a tiny echo for reassurance (don’t show sensitive data in prod)
+      const bits = [];
+      if(first) bits.push('First name: ' + first);
+      if(last) bits.push('Last name: ' + last);
+      if(email) bits.push('Email: ' + email);
+      if(bits.length) metaEl.textContent = bits.join(' • ');
+
+      // Optional: auto‑return to home after a delay
+      // setTimeout(()=>{ window.location.href = '/'; }, 12000);
+    })();
+  </script>
+</body>
+</html>
